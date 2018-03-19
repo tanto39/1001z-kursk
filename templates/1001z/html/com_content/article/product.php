@@ -20,7 +20,7 @@ $user    = JFactory::getUser();
 $info    = $params->get('info_block_position', 0);
 JHtml::_('behavior.caption');
 ?>
-<main class="product item-page<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Article">
+<main class="product item-page<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="http://schema.org/Product">
 	<meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>" />
 	<?php if ($this->params->get('show_page_heading')) : ?>
 	<div class="page-header">
@@ -46,7 +46,7 @@ JHtml::_('behavior.caption');
 	<?php if ($params->get('show_title') || $params->get('show_author')) : ?>
 	<div class="page-header">
 		<?php if ($params->get('show_title')) : ?>
-			<h1 itemprop="headline">
+			<h1 itemprop="name">
 				<?php echo $this->escape($this->item->title); ?>
 			</h1>
 		<?php endif; ?>
@@ -109,7 +109,8 @@ JHtml::_('behavior.caption');
 	<?php if (isset ($this->item->toc)) :
 		echo $this->item->toc;
 	endif; ?>
-	<article class="product-desc" itemprop="articleBody">
+        <div class="clearfix"></div>
+	<article class="product-desc" itemprop="description">
         <h2>Описание товара</h2>
 		<?php echo $this->item->text; ?>
 	</article>

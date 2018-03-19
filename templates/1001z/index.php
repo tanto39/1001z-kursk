@@ -357,6 +357,16 @@ style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" tit
 		</div>
 	</div>
 	<!--модалка-->
-	
+
+    <!-- Modal gallery -->
+    <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel">
+        <div class="slides"></div>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close" style="top: 40px; color: #fff;">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+    </div>
+
 </body>
 </html>
