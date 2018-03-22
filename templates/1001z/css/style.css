@@ -540,6 +540,7 @@ ul.spisok li{
 	border: 1px solid #94bed8;
 	background: #fff;
 }
+.product-list {margin-top: 20px;}
 .product-item {
 	border: 1px solid #9fbfda;
 	padding: 0 20px 20px 20px;
