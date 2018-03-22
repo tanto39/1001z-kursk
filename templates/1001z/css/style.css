@@ -789,6 +789,38 @@ ul.spisok li{
 	z-index: 100;
 }
 div.modal-body{padding: 40px;}
+
+/*------bottom-pagination------*/
+.items-more{display: none;}
+.pagination{
+    margin: 15px 0 10px 0;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+}
+.pagination ul li{
+    display: inline-block;
+    margin: 0 5px;
+    text-align: center;
+}
+.pagination p.counter{
+    padding-bottom: 10px;
+}
+.pagination a.pagenav,
+.pagination span.pagenav{
+    height: 25px;
+    padding: 3px 8px;
+    border: 1px #ccc solid;
+    line-height: 25px;
+}
+.pagination span.pagenav{
+    background: #FFF;
+}
+.pagination a.pagenav{
+    background: #e0dcdb;
+}
+.pagination .pull-right{float: none !important;}
+
 /*----adaptation----*/
 
 @media all and (max-width: 768px) {
