@@ -1,3 +1,6 @@
 /.idea
 /images
+/administrator/cache
+/cache
 configuration.php
+.htaccess

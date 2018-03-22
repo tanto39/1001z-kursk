@@ -21,7 +21,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
             ContentHelperRoute::getArticleRoute($displayData->slug, $displayData->catid, $displayData->language)
         ); ?>">
             <?php if ($params->get('show_title')) : ?>
-                <h2><?php echo $this->escape($displayData->title); ?></h2>
+                <h3><?php echo $this->escape($displayData->title); ?></h3>
             <?php endif; ?>
 
             <?php if ($displayData->state == 0) : ?>
