@@ -540,6 +540,7 @@ ul.spisok li{
 	border: 1px solid #94bed8;
 	background: #fff;
 }
+.product-list {margin-top: 20px;}
 .product-item {
 	border: 1px solid #9fbfda;
 	padding: 0 20px 20px 20px;
@@ -679,8 +680,8 @@ ul.spisok li{
 	overflow: hidden;
 }
 .detail-image-small-item {
-	min-height: 150px;
-	max-width: 150px;
+	height: 150px;
+	width: 150px;
 	background: #ffffff
 }
 .detail-image-small-item.active {
