@@ -45,6 +45,20 @@ $afterDisplayContent = trim(implode("\n", $results));
     <?php endif; ?>
     <?php echo $afterDisplayTitle; ?>
 
+    <?php if ($beforeDisplayContent || $afterDisplayContent || $this->params->get('show_description', 1) || $this->params->def('show_description_image', 1)) : ?>
+        <div class="category-desc clearfix">
+            <?php if ($this->params->get('show_description_image') && $this->category->getParams()->get('image')) : ?>
+                <img src="<?php echo $this->category->getParams()->get('image'); ?>" alt="<?php echo htmlspecialchars($this->category->getParams()->get('image_alt'), ENT_COMPAT, 'UTF-8'); ?>"/>
+            <?php endif; ?>
+            <?php echo $beforeDisplayContent; ?>
+            <?php if ($this->params->get('show_description') && $this->category->description) : ?>
+                <h2>Купить БУ автозапчасти в Курске</h2>
+                <?php echo JHtml::_('content.prepare', $this->category->description, '', 'com_content.category'); ?>
+            <?php endif; ?>
+            <?php echo $afterDisplayContent; ?>
+        </div>
+    <?php endif; ?>
+
     <?php if ($this->params->get('show_cat_tags', 1) && !empty($this->category->tags->itemTags)) : ?>
         <?php $this->category->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
         <?php echo $this->category->tagLayout->render($this->category->tags->itemTags); ?>
@@ -71,20 +85,6 @@ $afterDisplayContent = trim(implode("\n", $results));
                 <?php $leadingcount++; ?>
             <?php endforeach; ?>
         </div><!-- end items-leading -->
-    <?php endif; ?>
-
-    <?php if ($beforeDisplayContent || $afterDisplayContent || $this->params->get('show_description', 1) || $this->params->def('show_description_image', 1)) : ?>
-        <div class="category-desc clearfix">
-            <?php if ($this->params->get('show_description_image') && $this->category->getParams()->get('image')) : ?>
-                <img src="<?php echo $this->category->getParams()->get('image'); ?>" alt="<?php echo htmlspecialchars($this->category->getParams()->get('image_alt'), ENT_COMPAT, 'UTF-8'); ?>"/>
-            <?php endif; ?>
-            <?php echo $beforeDisplayContent; ?>
-            <?php if ($this->params->get('show_description') && $this->category->description) : ?>
-                <h2>Купить автозапчасти <?php echo $this->category->title; ?> в Курске</h2>
-                <?php echo JHtml::_('content.prepare', $this->category->description, '', 'com_content.category'); ?>
-            <?php endif; ?>
-            <?php echo $afterDisplayContent; ?>
-        </div>
     <?php endif; ?>
 
     <?php if (empty($this->lead_items) && empty($this->link_items) && empty($this->intro_items)) : ?>

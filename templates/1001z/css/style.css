@@ -467,14 +467,15 @@ a.top-mail:hover{text-decoration: none;}
 .content-page h1{
 	font-size: 2.2em;
 }
-.content-page h2{
+.content-page h3 {
+	font-size: 1.3em;
+}
+.content-page h2, .product-desc h3{
 	font-size: 2em;
 	border-top: 1px solid #94bed8;
 	padding: 10px;
 }
-.content-page h3 {
-	font-size: 1.3em;
-}
+.product-desc h3 {color: #1f5b6d;}
 .content-block{
 	background: #c9dbe6;
 	border-radius: 30px;
@@ -549,8 +550,26 @@ ul.spisok li{
 	font-size: 1.5em;
 }
 .product-item:hover {background: #fff;}
+.product-address {margin: 20px 0;}
+.product-address span {
+    padding: 5px 10px;
+    background: #ccc;
+    border-radius: 5px;
+}
 
 /*--------left---------*/
+.reviews-link {
+    cursor: pointer;
+    background: #77be79;
+    color: #fff;
+    display: block;
+    border: 3px solid #6177b7;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 20px 0;
+    border-radius: 15px;
+}
+.reviews-link:hover, .reviews-link:focus {text-decoration: none; color: #fff; background: #69A66A;}
 .order-button{
 	width: 100%;
 	text-decoration:none; text-align:center;

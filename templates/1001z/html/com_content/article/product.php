@@ -111,8 +111,9 @@ JHtml::_('behavior.caption');
 	endif; ?>
         <div class="clearfix"></div>
 	<article class="product-desc" itemprop="description">
-        <h2>Описание товара</h2>
+        <h3>Описание товара</h3>
 		<?php echo $this->item->text; ?>
+        <div class="product-address"><span>Адрес:</span> г. Курск, просп. Победы, 50</div>
 	</article>
 
 	<?php if ($info == 1 || $info == 2) : ?>

@@ -245,6 +245,9 @@ unset($this->_generator);
 			<!--модалка-->
 			<button class="order-button" data-target="#modal-zakaz" data-toggle="modal">Заказать звонок</button>
 
+            <!--отзывы-->
+            <a class="reviews-link" href="/otzyvy">Отзывы</a>
+
 			<!--кнопки соцсетей-->
 			<div class="socbuttons-block text-center">
 				<div class="soc-title">Поделиться с друзьями:</div>
@@ -264,7 +267,7 @@ unset($this->_generator);
 
 	<div class="row yandex-map">
 		<div class="map-load">Загрузка карты...</div>
-		<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A100249c8068b20ec1e61a2c4b872ec8d0435b289fd03e5d52bb3f19e3bcce5a3&amp;width=100%25&amp;height=350&amp;lang=ru_RU&amp;scroll=true"></script>	</div>
+		<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A100249c8068b20ec1e61a2c4b872ec8d0435b289fd03e5d52bb3f19e3bcce5a3&amp;width=100%25&amp;height=350&amp;lang=ru_RU&amp;scroll=false"></script>	</div>
 </div>
 <!--wrapper-->
 
