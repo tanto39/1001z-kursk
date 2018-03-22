@@ -60,7 +60,7 @@ if (!$fields)
     <?php if ($field->name == 'price'):?>
         <div class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">Цена:
             <span itemprop="price"><?=$field->value?></span>
-            <?php if ($field->value == 'не указано'):?><span>руб.</span><?php endif?>
+            <?php if ($field->value !== 'не указана'):?><span>руб.</span><?php endif?>
             <meta itemprop="priceCurrency" content="RUB">
         </div>
     <?php elseif($field->name != 'product-img' && $field->name != 'product-img-2' && $field->name != 'product-img-3'):?>
