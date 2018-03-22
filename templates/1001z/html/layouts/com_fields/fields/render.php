@@ -63,6 +63,8 @@ if (!$fields)
             <?php if ($field->value != 'не указана'):?><span>руб.</span><?php endif;?>
             <meta itemprop="priceCurrency" content="RUB">
         </div>
+    <?php elseif ($field->name == 'type'):?>
+        <div class="type">Тип детали: <?=$field->value?></div>
     <?php elseif($field->name != 'product-img' && $field->name != 'product-img-2' && $field->name != 'product-img-3'):?>
         <?php $class = $field->params->get('render_class'); ?>
         <dd class="field-entry <?php echo $class; ?>">
