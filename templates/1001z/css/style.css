@@ -821,6 +821,99 @@ div.modal-body{padding: 40px;}
 }
 .pagination .pull-right{float: none !important;}
 
+/*------credit------*/
+.gray-block {
+    background: #dedddd;
+	padding: 0 10px;
+}
+.gray-block h2{
+	font-size: 1.7em;
+	margin: 0;
+	padding: 20px 0;
+    border: none;
+}
+.tinkoff-landing-box {
+    padding: 20px 0;
+	align-items: stretch;
+}
+.tinkoff-add-razdel {
+	flex-basis: 6%;
+    text-align: center;
+    font-size: 1.6em;
+    color: #5e828e;
+	align-self: center;
+}
+.tinkoff-add-block {
+	flex-basis: 20%;
+    font-size: 0.9em;
+}
+.tinkoff-add-img {
+    max-width: 100%;
+    margin-bottom: 10px;
+	font-size: 7em;
+	color: #4f8051;
+}
+.tinkoff-add-img i{
+	text-align: center;
+	display: block;
+}
+.tinkoff-add-title {
+	text-align: center;
+	color: #364b52;
+}
+.credit-info-wrap {
+	background: #ffffff;
+    padding: 10px;
+}
+.credit-inf-list {
+	flex-basis: 60%;
+    padding: 0 20px 0 0;
+}
+.credit-inf-list h3 {
+	font-weight: bold;
+}
+.credit-inf-list li {
+	padding: 0 0 10px 25px;
+    position: relative;
+    color: #2d3e44;
+}
+.credit-inf-list ul li:before {
+	content: "✓";
+    font-size: 1.5em;
+    color: #538248;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 1.2;
+}
+.credit-info-preim-img {
+	width: 50px;
+    height: 50px;
+    overflow: hidden;
+    background: #ccc url(../images/credit-sprite.jpg) top left no-repeat;
+    flex-basis: 50px;
+}
+
+.credit-info-preim-wrap .credit-info-preim:nth-of-type(2) .credit-info-preim-img{background-position: -50px 0; }
+.credit-info-preim-wrap .credit-info-preim:nth-of-type(3) .credit-info-preim-img{background-position: -100px 0; }
+.credit-info-preim-wrap .credit-info-preim:nth-of-type(4) .credit-info-preim-img{background-position: -150px 0; }
+
+.credit-info-preim-desc {
+	flex-basis: 80%;
+    padding: 0 0 5px 10px;
+}
+.bottom-credit-desc {
+	font-size: 0.8em;
+	padding: 10px;
+}
+.bottom-credit-desc p{
+	margin: 0;
+}
+.bottom-credit-desc span {
+	font-size: 1.2em;	
+}
+
 /*----adaptation----*/
 
 @media all and (max-width: 768px) {

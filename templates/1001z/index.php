@@ -247,6 +247,9 @@ unset($this->_generator);
 
             <!--отзывы-->
             <a class="reviews-link" href="/otzyvy">Отзывы</a>
+			
+			<!--кредит тинькофф-->
+            <a class="reviews-link" href="/tinkoff-credit">Кредит от <br />"Тинькофф Банк"</a>
 
 			<!--кнопки соцсетей-->
 			<div class="socbuttons-block text-center">
