@@ -150,12 +150,12 @@ a.catalog-link-all:hover, a.catalog-link-all:focus{
 	text-shadow: 2px 2px 3px #fff;
 }
 
-.carousel-img, .main, .yandex-map, .content-block img, .catalog-sections>div:hover{
+.carousel-img, .main, .yandex-map, .content-block img, .catalog-sections>div:hover, .pb-link{
 	-webkit-box-shadow: 0px 0px 20px 0px rgba(50, 50, 50, 0.75);
 	-moz-box-shadow:    0px 0px 20px 0px rgba(50, 50, 50, 0.75);
 	box-shadow:         0px 0px 20px 0px rgba(50, 50, 50, 0.75);
 }
-.main:hover, .yandex-map:hover, .content-block img:hover{
+.main:hover, .yandex-map:hover, .content-block img:hover, .pb-link:hover{
 	box-shadow: none;
 }
 /*-----menu-----*/
@@ -608,6 +608,8 @@ ul.spisok li{
 .left-side{
 	padding: 0 15px 0 0 !important;
 }
+.pb-link {display: block;}
+.pb-link img {max-width: 100%;}
 
 
 /*-------map-------*/

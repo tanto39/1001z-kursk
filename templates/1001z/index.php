@@ -250,6 +250,11 @@ unset($this->_generator);
 			
 			<!--кредит тинькофф-->
             <a class="reviews-link" href="/tinkoff-credit">Кредит от <br />"Тинькофф Банк"</a>
+			
+			<!--кредит почта банк-->
+            <a class="pb-link" href="/pochta-bank">
+				<img src="/images/pb.jpg" alt="Кредит от Почта Банк" title="Кредит от Почта Банк"/>
+			</a>
 
 			<!--кнопки соцсетей-->
 			<div class="socbuttons-block text-center">

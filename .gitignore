@@ -2,5 +2,6 @@
 /images
 /administrator/cache
 /cache
+/logs
 configuration.php
 .htaccess
