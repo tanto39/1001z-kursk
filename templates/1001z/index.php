@@ -17,6 +17,9 @@ if ((!strpos($uri, 'administrator'))  && (strlen($uri)>1)) {
     exit();    
   }
 }
+
+// Include autopiter
+ require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/head.php";
 ?>
 
 <!DOCTYPE html>
@@ -195,6 +198,12 @@ unset($this->_generator);
 				<jdoc:include type="message" />
 				<jdoc:include type="modules" name="bread" style="xhtml"/>
 				<jdoc:include type="component" />
+
+                <div class="autopiter">
+                    <?php
+                    require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/body.php";
+                    ?>
+                </div>
 
 				<!--модалка-->
 				<button class="order-button center-block" data-target="#modal-zakaz" data-toggle="modal">Заказать обратный звонок</button>

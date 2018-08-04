@@ -1,6 +1,6 @@
 <?php
-    require_once "connect.php";
-    require_once "functions.php";
+    require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/connect.php";
+    require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/functions.php";
 
     //Добавляем позицию, если в post есть id детали
     //http://service.autopiter.ru/price.asmx?op=InsertToBasket
@@ -9,7 +9,7 @@
         $defaultQty = 0;
         $defaultId = 0;
         //Получаем все элементы корзины
-        $cartItems = $client->GetBasket()->GetBasketResult;
+        $cartItems = $clientAutopiter->GetBasket()->GetBasketResult;
         $innerItems = $cartItems->ItemCart;
         if (count($innerItems) > 0) {
             foreach ($innerItems as $cartItem) {
@@ -28,7 +28,7 @@
         }
         //Если в корзине нет такого продукта, то добавляем его, иначе обновляем кол-во
         if ($checkItem == false) {
-            $client->InsertToBasket(
+            $clientAutopiter->InsertToBasket(
                 array("items"=> array(
                     array(
                         "Catalog"=>$_POST["NameOfCatalog"],
@@ -43,7 +43,7 @@
                 ))
             );
         } else {
-            $client->UpdateQtyItemCart(array("id"=>$defaultId, "qty"=>$defaultQty+$_POST["quantity"]));
+            $clientAutopiter->UpdateQtyItemCart(array("id"=>$defaultId, "qty"=>$defaultQty+$_POST["quantity"]));
         }
     }
 ?>

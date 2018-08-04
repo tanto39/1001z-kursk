@@ -6,11 +6,11 @@ SoapClient, иначе необходимо использовать библи�
 встроенные возможности php. http://php.net/manual/en/book.soap.php */
 
 //при создании объекта по структуре сервиса указание "http://" в ссылке ОБЯЗАТЕЛЬНО!
-$client = new SoapClient("http://service.autopiter.ru/price.asmx?WSDL");
+$clientAutopiter = new SoapClient("http://service.autopiter.ru/price.asmx?WSDL");
 
 //http://service.autopiter.ru/price.asmx?op=IsAuthorization
-if (!($client->IsAuthorization()->IsAuthorizationResult)) {
+if (!($clientAutopiter->IsAuthorization()->IsAuthorizationResult)) {
     //http://service.autopiter.ru/price.asmx?op=Authorization
     //UserID - ваш клиентский id, Password - ваш пароль
-    $client->Authorization(array("UserID"=>"Ваш ID", "Password"=>"Ваш пароль", "Save"=> "true"));
+    $clientAutopiter->Authorization(array("UserID"=>"138982", "Password"=>"1qaz2wsx", "Save"=> "true"));
 }

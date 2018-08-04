@@ -1,13 +1,13 @@
 <?php
-    require_once "connect.php";
-    require_once "functions.php";
+    require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/connect.php";
+    require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/functions.php";
     //если существет post id элемента заказа и кол-во
     if (isset($_POST["id-item-order"]) && isset($_POST["basket-qty"])) {
         $client->UpdateQtyItemCart(array("id"=>$_POST["id-item-order"], "qty"=>$_POST["basket-qty"]));
     }
     //Если существует post id для удаления
     if (isset($_POST["id-item-order-delete"])) {
-        $client->DeleteItemCart(array("id"=>$_POST["id-item-order-delete"]));
+        $clientAutopiter->DeleteItemCart(array("id"=>$_POST["id-item-order-delete"]));
     }
 
     //Если редактировался комментарий
@@ -17,21 +17,21 @@
         } else {
             $commentAll = false;
         }
-        $client->SaveCommentForItemCart(array("id"=>$_POST["id-comment"], "comment"=>$_POST["item-comment"], "isAll"=>$commentAll));
+        $clientAutopiter->SaveCommentForItemCart(array("id"=>$_POST["id-comment"], "comment"=>$_POST["item-comment"], "isAll"=>$commentAll));
     }
 
     //Очистка корзины
     //http://service.autopiter.ru/price.asmx?op=ClearBasket
     if (isset($_POST["clear-basket"])) {
-        $client->ClearBasket();
+        $clientAutopiter->ClearBasket();
     }
 
     //оформление заказа
     if (isset($_POST["make-order"])) {
-        $order = $client->MakeOrderFromBasket()->MakeOrderFromBasketResult;
+        $order = $clientAutopiter->MakeOrderFromBasket()->MakeOrderFromBasketResult;
     }
 
-    $cartItems = $client->GetBasket()->GetBasketResult->ItemCart;
+    $cartItems = $clientAutopiter->GetBasket()->GetBasketResult->ItemCart;
 ?>
 <!doctype html>
 <html lang="ru">
