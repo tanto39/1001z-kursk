@@ -37,8 +37,9 @@
 <html lang="ru">
     <head>
         <meta charset="UTF-8">
-        <title>Корзина</title>
-        <link href="/templates/1001z/css/style.css" rel="stylesheet" />
+        <title>Веб-сервис Autopiter</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/common.css" rel="stylesheet" />
     </head>
     <body>
         <div id="wrapper">

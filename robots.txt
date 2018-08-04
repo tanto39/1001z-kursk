@@ -32,6 +32,7 @@ Disallow: /*index.php*
 Disallow: /*index.html*
 Disallow: /*?limitstart=0*
 Disallow: /*?start=*
+Disallow: /*?searchStr*
 Disallow: /pd.docx
 Allow: /component/osmap/?view=xml&id=1
 Sitemap: https://1001z-kursk.ru/component/osmap/?view=xml&id=1

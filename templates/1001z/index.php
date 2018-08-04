@@ -36,9 +36,12 @@ unset($this->_generator);
 	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	
 	<link href="/templates/1001z/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/templates/1001z/css/jquery-ui.css" rel="stylesheet" type="text/css">
 	<script defer type="text/javascript" src="/templates/1001z/js/jquery-3.1.1.min.js"></script>
 	<script defer type="text/javascript" src="/templates/1001z/js/bootstrap.min.js"></script>
-    <script defer type="text/javascript" src="/templates/1001z/js/scripts.js"></script>
+    <script defer type="text/javascript" src="/templates/1001z/js/ui/jquery-ui-1.10.4.custom.min.js"></script>
+	<script defer type="text/javascript" src="/templates/1001z/js/scripts.js"></script>
+
 	<!--[if IE]>
 	<script type="text/javascript" src="/templates/1001z/js/iehtmlfix.js"></script>
 	<![endif]-->
@@ -192,18 +195,19 @@ unset($this->_generator);
 
 <!--wrapper-->
 <div class="wrapper container">
+
+    <div class="row autopiter">
+        <?php
+        require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/body.php";
+        ?>
+    </div>
+
 	<div class="row">
 		<div class="col-sm-8 col-md-9 col-sm-push-4 col-md-push-3 main">
 			<div class="content-page">
 				<jdoc:include type="message" />
 				<jdoc:include type="modules" name="bread" style="xhtml"/>
 				<jdoc:include type="component" />
-
-                <div class="autopiter">
-                    <?php
-                    require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/body.php";
-                    ?>
-                </div>
 
 				<!--модалка-->
 				<button class="order-button center-block" data-target="#modal-zakaz" data-toggle="modal">Заказать обратный звонок</button>

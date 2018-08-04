@@ -113,3 +113,45 @@ var enterShop = {
         element.addClass('active');
     }
 }
+
+//Javascript функция получения статистики по детали
+function getStatistic(e, id, action) {
+    var self = $(e);
+    self.on("mouseleave", function(){
+        $(this).popover('destroy').unbind("mouseleave");
+    });
+    if (self.attr('data-content') == undefined) {
+        $.ajax({
+            url: "/includes/autopiter/ajax.php",
+            data: {
+                action: action,
+                idDetailStat: id
+            },
+            type: 'post',
+            success: function(output) {
+                var str = "";
+                if (action === 'getStatistic') {
+                    for (var i = 0, len = output.StatStore.length; i < len; i++) {
+                        str += "<span class='vl'><span class='l-vl'>Срок, дней:</span>" + output.StatStore[i].Day + "<span class='r-vl'>Доставлено, %: </span>"+ output.StatStore[i].PercentInDay + "</span>";
+                    }
+                } else {
+                    str += "<span class='vl'><b>Время, когда будет отправлен заказ поставщику</b>: "+output.DateOrdering+"</span>";
+                    str += "<span class='vl'><b>Дата последнего обновления прайса</b>: "+output.DateLastUpdated+"</span><br/>";
+                    str += "<span class='vlb'><b>Мин. сумма клиентских заказов</b>: "+output.MinSummOrdering +"</b></span><br/>";
+                    str += "<span class='vlb'><b>Условия работы</b>: "+output.Condition +"</b></span>";
+                    str += "<span class='vlb'><b>Дополнительные условия</b>: "+output.ExtraCondition  +"</b></span><br/>";
+                    str += "<span class='vlb'><b>Габаритная деталь</b>: "+output.IsBig  +"</b></span>";
+                    str += "<span class='vlb'><b>Процент отказов</b>: "+output.PercentageRefusal  +"</b></span>";
+                }
+
+                self.popover({
+                    html: true
+                }).attr("data-content", str).popover('show');
+            }
+        });
+    } else {
+        self.popover({
+            html: true
+        }).popover('show');
+    }
+}
