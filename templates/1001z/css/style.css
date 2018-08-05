@@ -109,6 +109,10 @@ body::before{
 	-ms-flex-align: center;
 	align-items: center;
 }
+.flex-50 {
+	width: 50%;
+	flex-basis: 50%;
+}
 .item-page img{
 	display: block;
 	margin: 10px auto;
@@ -923,6 +927,13 @@ div.modal-body{padding: 40px;}
 	border-radius: 25px;
 	background-color: #fff;
 	box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+.autopiter-top-block {
+
+}
+.autopiter-top-block .catalog-link-all{
+	width: 80%;
+	margin: 0 auto 10px;
 }
 .autopiter-title {font-size: 1.2em;}
 #wrapper {

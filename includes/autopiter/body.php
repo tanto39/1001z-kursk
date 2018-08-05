@@ -2,15 +2,20 @@
 <div id="wrapper">
     <span class="autopiter-title">Поиск запчасти по номеру детали <!--<span class="pull-right"><a href="information.php">Информация</a></span>--></span>
     <form id="search-number" action="" method="get" name="form1">
-        <div class="form-group">
-            <?php
-            $isCartExist = $clientAutopiter->GetBasket()->GetBasketResult;
-            if (isset($isCartExist->ItemCart) || $isCartExist -> stdClass) {
-                echo "<div class='pull-right'>У вас в корзине есть товары. <a href='basket.php'>Перейти в корзину</a></div>";
-            }
-            ?>
-            <input type="text" class="form-control" id="SearchNumber" placeholder="Введите номер или название детали" name="searchStr" value="<?= trim($_GET['searchStr'])?>" />
-            <button class="btn btn-primary" type="submit">Поиск</button>
+        <div class="form-group flex autopiter-top-block">
+            <div class="autopiter-search flex-50">
+                <input type="text" class="form-control" id="SearchNumber" placeholder="Введите номер детали" name="searchStr" value="<?= trim($_GET['searchStr'])?>" />
+                <button class="btn btn-primary" type="submit">Поиск</button>
+            </div>
+            <div class="flex-50">
+                <a class="catalog-link-all" href="https://www.parts-catalogs.com/#/catalogs" target="_blank">Узнать номер детали</a>
+                <?php
+                $isCartExist = $clientAutopiter->GetBasket()->GetBasketResult;
+                if (isset($isCartExist->ItemCart) || $isCartExist -> stdClass) {
+                    echo "<div class='text-center'>У вас в корзине есть товары. <a href='basket.php'>Перейти в корзину</a></div>";
+                }
+                ?>
+            </div>
         </div>
     </form>
     <?php
