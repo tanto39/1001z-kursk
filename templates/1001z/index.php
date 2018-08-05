@@ -18,6 +18,13 @@ if ((!strpos($uri, 'administrator'))  && (strlen($uri)>1)) {
   }
 }
 
+ if (isset($this->_script['text/javascript']))
+ {
+     $this->_script['text/javascript'] = preg_replace('%jQuery\(window\)\.on\(\'load\',\s*function\(\)\s*{\s*new\s*JCaption\(\'img.caption\'\);\s*}\);\s*%', '', $this->_script['text/javascript']); //ищем и заменяем наш скрипт на дырку от бублика
+     if (empty($this->_script['text/javascript']))
+         unset($this->_script['text/javascript']); //если кроме нашего скрипта ничего нет, то убираем тег script
+ }
+
 // Include autopiter
  require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/head.php";
 ?>
