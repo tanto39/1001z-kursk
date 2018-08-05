@@ -1,7 +1,7 @@
 
 <div id="wrapper">
     <span class="autopiter-title">Поиск запчасти по номеру детали <!--<span class="pull-right"><a href="information.php">Информация</a></span>--></span>
-    <form id="search-number" action="" method="get" name="form1">
+    <form id="search-number" method="get" name="form1">
         <div class="form-group flex autopiter-top-block">
             <div class="autopiter-search flex-50">
                 <input type="text" class="form-control" id="SearchNumber" placeholder="Введите номер детали" name="searchStr" value="<?= trim($_GET['searchStr'])?>" />
