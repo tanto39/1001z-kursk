@@ -1078,6 +1078,16 @@ th {
 }
 
 @media all and (max-width: 768px) {
+	.flex {
+		flex-direction: column;
+	}
+	.flex-50 {
+		width: 100%;
+		flex-basis: 100%;
+	}
+	.autopiter-top-block .catalog-link-all {
+		margin: 10px 0 10px 0;
+	}
 	.header-flex, .content-flex{
 		display: block;
 	}
@@ -1124,6 +1134,9 @@ th {
 	}
 	.center-header:after{
 		right: -22%;
+	}
+	#search-number #SearchNumber {
+		width: 200px;
 	}
 }
 
