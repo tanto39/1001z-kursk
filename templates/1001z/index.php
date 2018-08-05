@@ -36,11 +36,11 @@ unset($this->_generator);
 	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	
 	<link href="/templates/1001z/css/style.css" rel="stylesheet" type="text/css">
-	<link href="/templates/1001z/css/jquery-ui.css" rel="stylesheet" type="text/css">
-	<script defer type="text/javascript" src="/templates/1001z/js/jquery-3.1.1.min.js"></script>
-	<script defer type="text/javascript" src="/templates/1001z/js/bootstrap.min.js"></script>
-    <script defer type="text/javascript" src="/templates/1001z/js/ui/jquery-ui-1.10.4.custom.min.js"></script>
-	<script defer type="text/javascript" src="/templates/1001z/js/scripts.js"></script>
+	<link href="/templates/1001z/js/ui/jquery-ui.css" rel="stylesheet" type="text/css">
+	<script defer src="/templates/1001z/js/jquery-3.1.1.min.js"></script>
+	<script defer src="/templates/1001z/js/bootstrap.min.js"></script>
+    <script defer src="/templates/1001z/js/ui/jquery-ui-1.10.4.custom.min.js"></script>
+	<script defer src="/templates/1001z/js/scripts.js"></script>
 
 	<!--[if IE]>
 	<script type="text/javascript" src="/templates/1001z/js/iehtmlfix.js"></script>
@@ -288,7 +288,7 @@ unset($this->_generator);
 
 	<div class="row yandex-map">
 		<div class="map-load">Загрузка карты...</div>
-		<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A100249c8068b20ec1e61a2c4b872ec8d0435b289fd03e5d52bb3f19e3bcce5a3&amp;width=100%25&amp;height=350&amp;lang=ru_RU&amp;scroll=false"></script>	</div>
+		<script charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A100249c8068b20ec1e61a2c4b872ec8d0435b289fd03e5d52bb3f19e3bcce5a3&amp;width=100%25&amp;height=350&amp;lang=ru_RU&amp;scroll=false"></script>	</div>
 </div>
 <!--wrapper-->
 
@@ -316,7 +316,7 @@ style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" tit
 <!-- /Yandex.Metrika informer -->
 
 <!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
+<script>
     (function (d, w, c) {
         (w[c] = w[c] || []).push(function() {
             try {
