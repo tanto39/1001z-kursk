@@ -196,11 +196,11 @@ unset($this->_generator);
 <!--wrapper-->
 <div class="wrapper container">
 
-    <div class="row autopiter">
+    <aside class="row autopiter">
         <?php
         require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/body.php";
         ?>
-    </div>
+    </aside>
 
 	<div class="row">
 		<div class="col-sm-8 col-md-9 col-sm-push-4 col-md-push-3 main">
