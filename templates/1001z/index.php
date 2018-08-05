@@ -43,7 +43,7 @@ unset($this->_generator);
 	<script defer src="/templates/1001z/js/scripts.js"></script>
 
 	<!--[if IE]>
-	<script type="text/javascript" src="/templates/1001z/js/iehtmlfix.js"></script>
+	<script src="/templates/1001z/js/iehtmlfix.js"></script>
 	<![endif]-->
 	<jdoc:include type="head" />
 	
@@ -288,7 +288,7 @@ unset($this->_generator);
 
 	<div class="row yandex-map">
 		<div class="map-load">Загрузка карты...</div>
-		<script charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A100249c8068b20ec1e61a2c4b872ec8d0435b289fd03e5d52bb3f19e3bcce5a3&amp;width=100%25&amp;height=350&amp;lang=ru_RU&amp;scroll=false"></script>	</div>
+		<script async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A100249c8068b20ec1e61a2c4b872ec8d0435b289fd03e5d52bb3f19e3bcce5a3&amp;width=100%25&amp;height=350&amp;lang=ru_RU&amp;scroll=false"></script>	</div>
 </div>
 <!--wrapper-->
 
