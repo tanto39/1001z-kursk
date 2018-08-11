@@ -24,7 +24,7 @@ function detailsTblRowCreate($item) {
     echo "<td>" . $item->ShotNumber . "</td>";
     echo "<td>" . $item->NameRus . "</td>";
     echo "<td class='ofAval'>" .(($item->NumberOfAvailable)? $item->NumberOfAvailable: '<span class="glyphicon glyphicon-ok"></span>'). "</td>";
-    echo "<td>" . $item->SalePrice . "</td>";
+    echo "<td>" . round($item->SalePrice*1.23) . "</td>";
     echo "<td>" . $item->NumberOfDaysSupply . "</td>";
     echo "<td class='cell-stat'><span class='glyphicon glyphicon-tasks' onclick='getStatistic(this, ".$item->IdDetail.", \"getStatistic\")' data-container='body' data-toggle='popover' data-placement='left' title='Посмотреть статистику'></span></td>";
     echo "<td class='cell-info'><span class='glyphicon glyphicon-info-sign' onclick='getStatistic(this, ".$item->IdDetail.", \"getInfo\")' data-container='body' data-toggle='popover' data-placement='left' title='Посмотреть информацию'></span></td>";
@@ -46,6 +46,7 @@ function detailsTblRowCreate($item) {
 
 //Функци рендеринга таблицы в корзине
 function cartTblRowCreate($item) {
+    $newPrice = round($item->Cost*1.23);
     echo "<tr>";
     echo "<td>" . $item->Catalog . "</td>";
     echo "<td>" . $item->Number . "</td>";
@@ -58,8 +59,8 @@ function cartTblRowCreate($item) {
                 <button type='submit' class='glyphicon glyphicon-refresh' title='Обновить'></button>
             </form>
         </td>";
-    echo "<td>" . $item->Cost . "</td>";
-    echo "<td>".$item->Cost*$item->Quantity."</td>";
+    echo "<td>" . $newPrice . "</td>";
+    echo "<td>". $newPrice*$item->Quantity . "</td>";
     echo "<td>
             <form action='' method='post'>
                 <input type='hidden' value='".$item->Id."' name='id-item-order-delete' />
