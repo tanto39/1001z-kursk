@@ -24,6 +24,7 @@ Disallow: /logs/
 Disallow: /media/
 Disallow: /modules/
 Disallow: /plugins/
+Disallow: /information/
 Disallow: /basket*
 Disallow: /*component*
 Disallow: /*option*

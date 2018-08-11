@@ -1,6 +1,6 @@
 
 <div id="wrapper">
-    <span class="autopiter-title">Поиск запчасти по номеру детали <!--<span class="pull-right"><a href="information.php">Информация</a></span>--></span>
+    <span class="autopiter-title">Поиск запчасти по номеру детали</span>
     <form id="search-number" method="get" name="form1">
         <div class="form-group flex autopiter-top-block">
             <div class="autopiter-search flex-50">
@@ -12,7 +12,7 @@
                 <?php
                 $isCartExist = $clientAutopiter->GetBasket()->GetBasketResult;
                 if (isset($isCartExist->ItemCart) || $isCartExist -> stdClass) {
-                    echo "<div class='text-center'>У вас в корзине есть товары. <a href='/basketgit '>Перейти в корзину</a></div>";
+                    echo "<div class='text-center'>У вас в корзине есть товары. <a href='/basket'>Перейти в корзину</a></div>";
                 }
                 ?>
             </div>

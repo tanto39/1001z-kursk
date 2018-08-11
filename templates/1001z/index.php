@@ -204,11 +204,13 @@ unset($this->_generator);
 <div class="wrapper container">
 
     <aside class="row autopiter">
-        <?php if ($_SERVER['REQUEST_URI'] == "/basket"){?>
-                <jdoc:include type="message" />
-                <jdoc:include type="modules" name="bread" style="xhtml"/>
-                <?php require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/basket.php";?>
-            <?php }else
+        <?php if ($_SERVER['REQUEST_URI'] == "/basket") { ?>
+            <jdoc:include type="message"/>
+            <jdoc:include type="modules" name="bread" style="xhtml"/>
+            <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/includes/autopiter/basket.php";
+            } elseif ($_SERVER['REQUEST_URI'] == "/information") {
+                require_once $_SERVER["DOCUMENT_ROOT"] . "/includes/autopiter/information.php";
+            } else
                 require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/body.php";
         ?>
     </aside>
@@ -216,7 +218,7 @@ unset($this->_generator);
 	<div class="row">
 		<div class="col-sm-8 col-md-9 col-sm-push-4 col-md-push-3 main">
 			<div class="content-page">
-                <?php if ($_SERVER['REQUEST_URI'] != "/basket"):?>
+                <?php if (($_SERVER['REQUEST_URI'] != "/basket") && ($_SERVER['REQUEST_URI'] != "/information")):?>
 				    <jdoc:include type="message" />
 				    <jdoc:include type="modules" name="bread" style="xhtml"/>
 				    <jdoc:include type="component" />
