@@ -12,7 +12,7 @@
                 <?php
                 $isCartExist = $clientAutopiter->GetBasket()->GetBasketResult;
                 if (isset($isCartExist->ItemCart) || $isCartExist -> stdClass) {
-                    echo "<div class='text-center'>У вас в корзине есть товары. <a href='basket.php'>Перейти в корзину</a></div>";
+                    echo "<div class='text-center'>У вас в корзине есть товары. <a href='/basketgit '>Перейти в корзину</a></div>";
                 }
                 ?>
             </div>

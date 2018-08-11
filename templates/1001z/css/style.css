@@ -928,8 +928,8 @@ div.modal-body{padding: 40px;}
 	background-color: #fff;
 	box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
-.autopiter-top-block {
-
+.autopiter .breadcrumb{
+	margin: 20px 0 0 0;
 }
 .autopiter-top-block .catalog-link-all{
 	width: 80%;

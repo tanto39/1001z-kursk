@@ -204,17 +204,23 @@ unset($this->_generator);
 <div class="wrapper container">
 
     <aside class="row autopiter">
-        <?php
-        require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/body.php";
+        <?php if ($_SERVER['REQUEST_URI'] == "/basket"){?>
+                <jdoc:include type="message" />
+                <jdoc:include type="modules" name="bread" style="xhtml"/>
+                <?php require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/basket.php";?>
+            <?php }else
+                require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/body.php";
         ?>
     </aside>
 
 	<div class="row">
 		<div class="col-sm-8 col-md-9 col-sm-push-4 col-md-push-3 main">
 			<div class="content-page">
-				<jdoc:include type="message" />
-				<jdoc:include type="modules" name="bread" style="xhtml"/>
-				<jdoc:include type="component" />
+                <?php if ($_SERVER['REQUEST_URI'] != "/basket"):?>
+				    <jdoc:include type="message" />
+				    <jdoc:include type="modules" name="bread" style="xhtml"/>
+				    <jdoc:include type="component" />
+                <?php endif;?>
 
 				<!--модалка-->
 				<button class="order-button center-block" data-target="#modal-zakaz" data-toggle="modal">Заказать обратный звонок</button>
