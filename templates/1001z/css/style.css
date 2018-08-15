@@ -935,7 +935,8 @@ div.modal-body{padding: 40px;}
 	width: 80%;
 	margin: 0 auto 10px;
 }
-.autopiter-title {font-size: 1.2em;}
+.autopiter-top-block {align-items: stretch;}
+.autopiter-title {font-size: 1.2em; padding: 0 0 10px 0;}
 #wrapper {
 	min-height: 100%;
 	height: auto !important;
@@ -1069,6 +1070,25 @@ th {
 	margin-left: 40px;
 	margin-right: 10px;
 }
+.addtobasket {
+	margin: 0 0 0 10px;
+	cursor: pointer;
+}
+.basket-button i{
+	font-size: 1.5em;
+	top: 8px;
+	padding: 0 20px 0 0;
+}
+.checkbox-inline, .radio-inline {
+	position: relative;
+	padding-left: 20px;
+	margin-bottom: 0;
+	font-weight: 400;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.checkbox-inline, .radio-inline , label.label-inline {display: inline-block;}
+.form-basket input{border: 1px solid #82a1af;}
 
 /*----adaptation----*/
 @media all and (max-width: 768px) {

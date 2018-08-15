@@ -1,37 +1,12 @@
 <?php
     require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/connect.php";
     require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/functions.php";
-    //если существет post id элемента заказа и кол-во
-    if (isset($_POST["id-item-order"]) && isset($_POST["basket-qty"])) {
-        $client->UpdateQtyItemCart(array("id"=>$_POST["id-item-order"], "qty"=>$_POST["basket-qty"]));
-    }
-    //Если существует post id для удаления
-    if (isset($_POST["id-item-order-delete"])) {
-        $clientAutopiter->DeleteItemCart(array("id"=>$_POST["id-item-order-delete"]));
-    }
 
-    //Если редактировался комментарий
-    if(isset($_POST["id-comment"])) {
-        if(isset($_POST["commentAll"])){
-            $commentAll = true;
-        } else {
-            $commentAll = false;
-        }
-        $clientAutopiter->SaveCommentForItemCart(array("id"=>$_POST["id-comment"], "comment"=>$_POST["item-comment"], "isAll"=>$commentAll));
-    }
+    $cartItems = [];
 
-    //Очистка корзины
-    //http://service.autopiter.ru/price.asmx?op=ClearBasket
-    if (isset($_POST["clear-basket"])) {
-        $clientAutopiter->ClearBasket();
-    }
+    if (isset($_COOKIE['basket-1001']))
+        $cartItems = unserialize($_COOKIE['basket-1001']);
 
-    //оформление заказа
-    if (isset($_POST["make-order"])) {
-        $order = $clientAutopiter->MakeOrderFromBasket()->MakeOrderFromBasketResult;
-    }
-
-    $cartItems = $clientAutopiter->GetBasket()->GetBasketResult->ItemCart;
 ?>
 
 <div id="wrapper">
@@ -45,7 +20,6 @@
                         <th>Фирма</th>
                         <th>Номер</th>
                         <th>Наименование запчасти</th>
-                        <th>Комментарий</th>
                         <th>Кол-во</th>
                         <th class="td-condensed">Цена</th>
                         <th>Сумма</th>
@@ -55,16 +29,21 @@
                 <tbody>
                     <?php
                     $resultCost = 0;
-                    if (count($cartItems) > 1) {
-                        foreach ($cartItems as $item) {
-                            cartTblRowCreate($item);
-                            $resultCost += $item->Cost * $item->Quantity;
+
+                    foreach ($cartItems as $cartItem) {
+                        $result = $clientAutopiter->GetPriceId(array("ID"=> $cartItem['catalog_id'], "FormatCurrency" => 'РУБ', "SearchCross"=>0,"IdArticleDetail"=>$cartItem['id']));
+                        $items = $result->GetPriceIdResult->BasePriceForClient;
+
+                        if (count($items) > 1) {
+                            cartTblRowCreate($items[0], $cartItem['quantity']);
+                            $resultCost += ($items[0]->SalePrice*1.23)->SalePrice*$cartItem['quantity'];
+                        } else if (count($items) != 0) {
+                            cartTblRowCreate($items, $cartItem['quantity']);
+                            $resultCost += ($items->SalePrice*1.23)*$cartItem['quantity'];
                         }
-                    } else {
-                        cartTblRowCreate($cartItems);
-                        $resultCost += $cartItems->Cost * $cartItems->Quantity;
                     }
                     ?>
+
                 </tbody>
                 <tfoot>
                     <tr>
@@ -75,67 +54,31 @@
                     </tr>
                 </tfoot>
             </table>
-            <div class="basket-controls">
-                <form action="" method="post">
-                    <input type="hidden" name="clear-basket" />
-                    <button class="btn btn-default btn-lg" type="submit">Очистить корзину</button>
-                </form>
-                <form action="" method="post">
-                    <input type="hidden" name="make-order" />
-                    <button class="btn btn-success btn-lg" type="submit">Оформить заказ</button>
+
+            <div class="form-basket">
+                <form method="post" action="/order.php" id="basket-form">
+                    <div class="form-zakaz">
+                        <input class="form-name form-control" type="text" placeholder="Введите имя" required name="name" size="16" />
+                        <input class="form-phone form-control" type="tel" placeholder="8**********" required pattern="(\+?\d[- .]*){7,13}" title="Международный, государственный или местный телефонный номер" name="phone" size="16" />
+                        <input class="form-mail form-control" type="email" placeholder="email@email.ru" required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}" name="email" size="16" />
+                        <input type="hidden" name="items" value='<?=base64_encode($_COOKIE['basket-1001'])?>'/>
+                        <input type="hidden" name="price" value="<?=$resultCost?>"/>
+                        <div class="form-input form-pd"><label class="label-inline">Даю согласие на обработку <a href="#" target="_blank" rel="noopener noreferrer">персональных данных</a>:</label><input class="checkbox-inline" type="checkbox" required="" name="pd" /></div>
+                        <label>Защита от спама: введите сумму 2+2:</label><input class="form-control form-capcha" type="number" required name="capcha"/>
+                    </div>
                 </form>
             </div>
-        <?php } ?>
 
-        <?php
-            if (!isset($_POST["make-order"]) && count($cartItems) == 0){
-                echo "Ваша корзина пуста!";
-            }
-        ?>
+            <div class="basket-controls flex">
+                <button class="btn btn-default btn-lg clearbasket" type="submit">Очистить корзину</button>
+                <input class="btn btn-success btn-lg" type="submit" form="basket-form" value="Оформить заказ">
+            </div>
 
-        <?php
-            if (isset($_POST["make-order"])) {
-                if (isset($order->NumberInvoice)) {
-                    echo "Ваш заказ успешно оформлен! Номер счёта: ".$order->NumberInvoice. ".";
-                } else {
-                    echo "Произошла ошибка оформления смотрите что получили в ответе.";
-                }
-            }
-        ?>
+        <?php } else {
+            echo "<p class='text-center'>Корзина пуста!</p>";
+        }?>
+
+
     </div>
 </div>
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <form class="modal-content" action="" method="post">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Комментарий</h4>
-            </div>
-            <div class="modal-body">
-                <textarea class="form-control" name="item-comment" rows="3"></textarea>
-                <div class="checkbox">
-                    <label>
-                        <input id="commentAll" type="checkbox" value="commentAll" name="commentAll" />
-                        Добавить ко всем позициям в корзине
-                    </label>
-                </div>
-                <input id="id-comment" name="id-comment" type="hidden" />
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                <button type="submit" class="btn btn-primary">Сохранить</button>
-            </div>
-        </form>
-    </div>
-</div>
-<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript">
-    $(function(){
-        $('.modal').on('show.bs.modal', function (e) {
-            var self = $(this),
-                btn = $(e.relatedTarget);
-            self.find('textarea').val(btn.text()).end().find('#id-comment').val(btn.attr('data-id'));
-        });
-    });
-</script>
+

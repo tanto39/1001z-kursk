@@ -1,20 +1,18 @@
 
 <div id="wrapper">
-    <span class="autopiter-title">Поиск запчасти по номеру детали</span>
     <form id="search-number" method="get" name="form1">
         <div class="form-group flex autopiter-top-block">
             <div class="autopiter-search flex-50">
+                <div class="autopiter-title">Поиск запчасти по номеру детали</div>
                 <input type="text" class="form-control" id="SearchNumber" placeholder="Введите номер детали" name="searchStr" value="<?= trim($_GET['searchStr'])?>" />
                 <button class="btn btn-primary" type="submit">Поиск</button>
             </div>
             <div class="flex-50">
                 <a class="catalog-link-all" href="https://www.parts-catalogs.com/#/catalogs" target="_blank">Узнать номер детали</a>
-                <?php
-                $isCartExist = $clientAutopiter->GetBasket()->GetBasketResult;
-                if (isset($isCartExist->ItemCart) || $isCartExist -> stdClass) {
-                    echo "<div class='text-center'>У вас в корзине есть товары. <a href='/basket'>Перейти в корзину</a></div>";
-                }
-                ?>
+                <a class="catalog-link-all basket-button" href="/basket">
+                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                        <span>Перейти в корзину</span>
+                </a>
             </div>
         </div>
     </form>
@@ -90,5 +88,17 @@
                         ?>
                     </tbody>
                 </table>
+
+                <div id="modal-info" class="modal fade" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <button class="close" type="button" data-dismiss="modal">×</button>
+                            <div class="modal-body">
+                                <div class="body-info"></div>
+                                <a href="/basket">Перейти в корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         <?php endif; ?>
 </div>

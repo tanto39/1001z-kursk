@@ -95,7 +95,6 @@ $(document).ready(function() {
             }
         );
     });
-
 });
 
 var enterShop = {
@@ -111,8 +110,79 @@ var enterShop = {
         img_container.attr('src', src);
         $(".detail-image-small-block").find('.detail-image-small-item').removeClass('active');
         element.addClass('active');
+    },
+
+    /**
+     * Add product to basket
+     * @param productId
+     * @param quantity
+     */
+    addToBasket: function (productId, quantity, catalog_id) {
+        if (!quantity || (quantity == 0) || (quantity < 0)) {
+            quantity = 1;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/includes/autopiter/ajax-basket.php",
+            data: {productId:productId,quantity:quantity,catalog_id:catalog_id},
+            success: function(data) {
+                $('.body-info').html(data);
+            }
+        });
+    },
+
+    /**
+     * Clear basket
+     */
+    clearBasket: function () {
+        var cookie_date = new Date();  // Текущая дата и время
+        cookie_date.setTime (cookie_date.getTime() - 1);
+        document.cookie = "basket-1001=; expires=" + cookie_date.toGMTString();
+        location.reload();
+    },
+
+    /**
+     * delete item from basket
+     * @param productId
+     */
+    deleteBasketItem: function (productId) {
+        $.ajax({
+            type: "POST",
+            url: "/includes/autopiter/ajax-basket.php",
+            data: {deleteProductId:productId},
+            success: function(data) {
+                location.reload();
+            }
+        });
     }
 }
+
+/**
+ * Add to basket autopiter
+ */
+$('.addtobasket').click(function (e) {
+    e.preventDefault();
+    var quantity = $(this).closest("td").find(".quantity").val();
+    var productId = $(this).data("number");
+    var catalog_id = $(this).data("catalog_id");
+
+    enterShop.addToBasket(productId, quantity, catalog_id);
+});
+
+/**
+ * clear basket
+ */
+$('.clearbasket').click(function (e) {
+    e.preventDefault();
+    enterShop.clearBasket();
+});
+
+$('.delete-item-basket').click(function (e) {
+    e.preventDefault();
+    var productId = $(this).data("product_id");
+    enterShop.deleteBasketItem(productId);
+});
 
 //Javascript функция получения статистики по детали
 function getStatistic(e, id, action) {

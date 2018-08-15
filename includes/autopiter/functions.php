@@ -30,8 +30,8 @@ function detailsTblRowCreate($item) {
     echo "<td class='cell-info'><span class='glyphicon glyphicon-info-sign' onclick='getStatistic(this, ".$item->IdDetail.", \"getInfo\")' data-container='body' data-toggle='popover' data-placement='left' title='Посмотреть информацию'></span></td>";
     echo "<td class='td-order nowrap'>
             <form method='POST' action=''>
-            <input type='text' class='form-control col-xs-2' value='".(($item->MinNumberOfSales)? $item->MinNumberOfSales: '1')."' name='quantity' />
-            <button type='submit' class='glyphicon glyphicon-shopping-cart'></button>
+            <input type='text' class='form-control col-xs-2 quantity' value='".(($item->MinNumberOfSales)? $item->MinNumberOfSales: '1')."' name='quantity' />
+            <button data-target=\"#modal-info\" data-toggle=\"modal\" class='glyphicon glyphicon-shopping-cart addtobasket' data-number='".$item->IdDetail."' data-catalog_id='".$item->ID."'></button>
             <input type='hidden' value='".$item->IdDetail."' name='IdDetail' />
             <input type='hidden' value='".$item->NameOfCatalog."' name='NameOfCatalog' />
             <input type='hidden' value='".$item->SalePrice."' name='SalePrice' />
@@ -45,29 +45,42 @@ function detailsTblRowCreate($item) {
 }
 
 //Функци рендеринга таблицы в корзине
-function cartTblRowCreate($item) {
-    $newPrice = round($item->Cost*1.23);
+function cartTblRowCreate($item, $quantity) {
+    $newPrice = round($item->SalePrice*1.23);
     echo "<tr>";
-    echo "<td>" . $item->Catalog . "</td>";
+    echo "<td>" . $item->NameOfCatalog . "</td>";
     echo "<td>" . $item->Number . "</td>";
-    echo "<td>" . $item->Name . "</td>";
-    echo "<td><div class='comment-add' data-toggle='modal' data-target='.bs-example-modal-sm' data-id='".$item->Id."'>" .(($item->Comment)? $item->Comment: '<span class=\'glyphicon glyphicon-comment\'></span>'). "</div></td>";
+    echo "<td>" . $item->NameRus . "</td>";
     echo "<td>
             <form action='' method='post'>
-                <input class='basket-qty' type='text' value='" . $item->Quantity . "' name='basket-qty' />
+                <input class='basket-qty' type='text' value='" . $quantity . "' name='basket-qty' />
                 <input type='hidden' value='".$item->Id."' name='id-item-order' />
-                <button type='submit' class='glyphicon glyphicon-refresh' title='Обновить'></button>
             </form>
         </td>";
     echo "<td>" . $newPrice . "</td>";
-    echo "<td>". $newPrice*$item->Quantity . "</td>";
+    echo "<td>". $newPrice*$quantity . "</td>";
     echo "<td>
             <form action='' method='post'>
-                <input type='hidden' value='".$item->Id."' name='id-item-order-delete' />
-                <button type='submit' class='glyphicon glyphicon-remove'></button>
+                <button type='submit' data-product_id='" . $item->IdDetail . "' class='glyphicon glyphicon-remove delete-item-basket'></button>
             </form>
         </td>";
     echo "</tr>";
+}
+
+//Функция рендеринга таблицы для отправки письма о заказе
+function orderTblRowCreate($item, $quantity) {
+    $newPrice = round($item->SalePrice*1.23);
+    $result = "";
+    $result .= "<tr>";
+    $result .= "<td>" . $item->NameOfCatalog . "</td>";
+    $result .= "<td>" . $item->Number . "</td>";
+    $result .= "<td>" . $item->NameRus . "</td>";
+    $result .= "<td>" . $quantity . "</td>";
+    $result .= "<td>" . $newPrice . "</td>";
+    $result .= "<td>". $newPrice*$quantity . "</td>";
+    $result .= "</tr>";
+
+    return $result;
 }
 
 //Функция рендеринга расходных накладных
