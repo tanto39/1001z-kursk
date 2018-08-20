@@ -1,7 +1,8 @@
 /.idea
 /images
-/administrator/cache
-/cache
-/logs
+/images/
+/administrator/cache/
+/cache/
+/logs/
 configuration.php
 .htaccess

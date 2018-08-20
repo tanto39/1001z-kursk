@@ -109,6 +109,10 @@ body::before{
 	-ms-flex-align: center;
 	align-items: center;
 }
+.flex-50 {
+	width: 50%;
+	flex-basis: 50%;
+}
 .item-page img{
 	display: block;
 	margin: 10px auto;
@@ -916,8 +920,178 @@ div.modal-body{padding: 40px;}
 	font-size: 1.2em;	
 }
 
-/*----adaptation----*/
+/*----autopiter-----*/
+.autopiter {
+	margin-bottom: 15px;
+	border: 3px solid #afd0e4;
+	border-radius: 25px;
+	background-color: #fff;
+	box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+.autopiter .breadcrumb{
+	margin: 20px 0 0 0;
+}
+.autopiter-top-block .catalog-link-all{
+	width: 80%;
+	margin: 0 auto 10px;
+}
+.autopiter-top-block {align-items: stretch;}
+.autopiter-title {font-size: 1.2em; padding: 0 0 10px 0;}
+#wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto;
+	padding: 30px;
+}
+#wrapper h2 {
+	margin-top: 0;
+}
+#search-number {
+	margin-top: 30px;
+}
+#search-number #SearchNumber {
+	width: 350px;
+}
+#search-number #SearchNumber,
+#search-number .btn {
+	display: inline-block;
+	vertical-align: top;
+}
+.search-link {
+	display: block;
+}
+.search-link:hover .glyphicon {
+	color: #428BCA;
+}
+.t-ac {
+	text-align: center;
+}
+.table tbody tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+.ofAval .glyphicon {
+	color: green;
+}
+.td-order {
+	width: 90px;
+}
+.td-order input[type="text"] {
+	width: 40px;
+	padding: 2px 6px;
+	height: 22px;
+	display: inline-block;
+}
+.td-order button {
+	margin-left: 12px;
+	cursor: pointer;
+	top: 2px;
+}
+.td-order button:hover {
+	color: #428BCA;
+}
+.td-condensed {
+	width: 1%;
+}
+.nowrap {
+	white-space: nowrap;
+}
+th {
+	vertical-align: middle !important;
+}
+.glyphicon-shopping-cart {
+	border: none;
+	background-color: transparent;
+}
+.basket-qty {
+	width: 40px;
+}
+.comment-add {
+	height: 18px;
+	vertical-align: middle;
+	text-align: center;
+	cursor: pointer;
+}
+.comment-add .glyphicon-comment {
+	font-size: 20px;
+}
+.modal-open {
+	overflow-y: scroll;
+}
+.modal {
+	overflow-y: auto;
+}
+.glyphicon-refresh,
+.glyphicon-remove{
+	background-color: transparent;
+	border: 0;
+	outline: none;
+}
+.basket-controls {
+	text-align: right;
+}
+.btn-success .glyphicon {
+	color: #fff;
+}
+.basket-controls form {
+	display: inline-block;
+	vertical-align: top;
+}
+.table tfoot td {
+	border-right: 0 !important;
+	border-left: 0 !important;
+}
+.cell-stat,
+.cell-info {
+	text-align: center;
+}
+.cell-stat .glyphicon ,
+.cell-info .glyphicon {
+	cursor: pointer;
+}
+.vlb {
+	display: block;
+}
+.popover {
+	width: auto;
+	max-width: 550px;
+	font-size: 13px;
+}
+.vl {
+	display: block;
+	white-space: nowrap;
+}
+.l-vl {
+	display: inline-block;
+	margin-right: 10px;
+}
+.r-vl {
+	display: inline-block;
+	margin-left: 40px;
+	margin-right: 10px;
+}
+.addtobasket {
+	margin: 0 0 0 10px;
+	cursor: pointer;
+}
+.basket-button i{
+	font-size: 1.5em;
+	top: 8px;
+	padding: 0 20px 0 0;
+}
+.checkbox-inline, .radio-inline {
+	position: relative;
+	padding-left: 20px;
+	margin-bottom: 0;
+	font-weight: 400;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.checkbox-inline, .radio-inline , label.label-inline {display: inline-block;}
+.form-basket input{border: 1px solid #82a1af;}
+.sendorder {margin-left: 5px;}
 
+/*----adaptation----*/
 @media all and (max-width: 768px) {
 	.content-page, .content-block{
 		padding: 10px;
@@ -925,6 +1099,16 @@ div.modal-body{padding: 40px;}
 }
 
 @media all and (max-width: 768px) {
+	.flex {
+		flex-direction: column;
+	}
+	.flex-50 {
+		width: 100%;
+		flex-basis: 100%;
+	}
+	.autopiter-top-block .catalog-link-all {
+		margin: 10px 0 10px 0;
+	}
 	.header-flex, .content-flex{
 		display: block;
 	}
@@ -971,6 +1155,9 @@ div.modal-body{padding: 40px;}
 	}
 	.center-header:after{
 		right: -22%;
+	}
+	#search-number #SearchNumber {
+		width: 200px;
 	}
 }
 

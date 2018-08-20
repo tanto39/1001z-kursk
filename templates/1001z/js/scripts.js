@@ -95,7 +95,6 @@ $(document).ready(function() {
             }
         );
     });
-
 });
 
 var enterShop = {
@@ -111,5 +110,118 @@ var enterShop = {
         img_container.attr('src', src);
         $(".detail-image-small-block").find('.detail-image-small-item').removeClass('active');
         element.addClass('active');
+    },
+
+    /**
+     * Add product to basket
+     * @param productId
+     * @param quantity
+     */
+    addToBasket: function (productId, quantity, catalog_id) {
+        if (!quantity || (quantity == 0) || (quantity < 0)) {
+            quantity = 1;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/includes/autopiter/ajax-basket.php",
+            data: {productId:productId,quantity:quantity,catalog_id:catalog_id},
+            success: function(data) {
+                $('.body-info').html(data);
+            }
+        });
+    },
+
+    /**
+     * Clear basket
+     */
+    clearBasket: function () {
+        var cookie_date = new Date();  // Текущая дата и время
+        cookie_date.setTime (cookie_date.getTime() - 1);
+        document.cookie = "basket-1001=; expires=" + cookie_date.toGMTString();
+        location.reload();
+    },
+
+    /**
+     * delete item from basket
+     * @param productId
+     */
+    deleteBasketItem: function (productId) {
+        $.ajax({
+            type: "POST",
+            url: "/includes/autopiter/ajax-basket.php",
+            data: {deleteProductId:productId},
+            success: function(data) {
+                location.reload();
+            }
+        });
+    }
+}
+
+/**
+ * Add to basket autopiter
+ */
+$('.addtobasket').click(function (e) {
+    e.preventDefault();
+    var quantity = $(this).closest("td").find(".quantity").val();
+    var productId = $(this).data("number");
+    var catalog_id = $(this).data("catalog_id");
+
+    enterShop.addToBasket(productId, quantity, catalog_id);
+});
+
+/**
+ * clear basket
+ */
+$('.clearbasket').click(function (e) {
+    e.preventDefault();
+    enterShop.clearBasket();
+});
+
+$('.delete-item-basket').click(function (e) {
+    e.preventDefault();
+    var productId = $(this).data("product_id");
+    enterShop.deleteBasketItem(productId);
+});
+
+//Javascript функция получения статистики по детали
+function getStatistic(e, id, action) {
+    var self = $(e);
+    self.on("mouseleave", function(){
+        $(this).popover('destroy').unbind("mouseleave");
+    });
+    if (self.attr('data-content') == undefined) {
+        $.ajax({
+            url: "/includes/autopiter/ajax.php",
+            data: {
+                action: action,
+                idDetailStat: id
+            },
+            type: 'post',
+            success: function(output) {
+                var str = "";
+                if (action === 'getStatistic') {
+                    for (var i = 0, len = output.StatStore.length; i < len; i++) {
+                        str += "<span class='vl'><span class='l-vl'>Срок, дней:</span>" + output.StatStore[i].Day + "<span class='r-vl'>Доставлено, %: </span>"+ output.StatStore[i].PercentInDay + "</span>";
+                    }
+                } else {
+                    str += "<span class='vl'><b>Время, когда будет отправлен заказ поставщику</b>: "+output.DateOrdering+"</span>";
+                    str += "<span class='vl'><b>Дата последнего обновления прайса</b>: "+output.DateLastUpdated+"</span><br/>";
+                    str += "<span class='vlb'><b>Мин. сумма клиентских заказов</b>: "+output.MinSummOrdering +"</b></span><br/>";
+                    str += "<span class='vlb'><b>Условия работы</b>: "+output.Condition +"</b></span>";
+                    str += "<span class='vlb'><b>Дополнительные условия</b>: "+output.ExtraCondition  +"</b></span><br/>";
+                    str += "<span class='vlb'><b>Габаритная деталь</b>: "+output.IsBig  +"</b></span>";
+                    str += "<span class='vlb'><b>Процент отказов</b>: "+output.PercentageRefusal  +"</b></span>";
+                }
+
+                self.popover({
+                    html: true
+                }).attr("data-content", str).popover('show');
+            }
+        });
+    } else {
+        self.popover({
+            html: true
+        }).popover('show');
     }
 }

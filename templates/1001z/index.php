@@ -17,6 +17,16 @@ if ((!strpos($uri, 'administrator'))  && (strlen($uri)>1)) {
     exit();    
   }
 }
+
+ if (isset($this->_script['text/javascript']))
+ {
+     $this->_script['text/javascript'] = preg_replace('%jQuery\(window\)\.on\(\'load\',\s*function\(\)\s*{\s*new\s*JCaption\(\'img.caption\'\);\s*}\);\s*%', '', $this->_script['text/javascript']); //ищем и заменяем наш скрипт на дырку от бублика
+     if (empty($this->_script['text/javascript']))
+         unset($this->_script['text/javascript']); //если кроме нашего скрипта ничего нет, то убираем тег script
+ }
+
+// Include autopiter
+ require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/head.php";
 ?>
 
 <!DOCTYPE html>
@@ -33,11 +43,14 @@ unset($this->_generator);
 	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	
 	<link href="/templates/1001z/css/style.css" rel="stylesheet" type="text/css">
-	<script defer type="text/javascript" src="/templates/1001z/js/jquery-3.1.1.min.js"></script>
-	<script defer type="text/javascript" src="/templates/1001z/js/bootstrap.min.js"></script>
-    <script defer type="text/javascript" src="/templates/1001z/js/scripts.js"></script>
+	<link href="/templates/1001z/js/ui/jquery-ui.css" rel="stylesheet" type="text/css">
+	<script defer src="/templates/1001z/js/jquery-3.1.1.min.js"></script>
+	<script defer src="/templates/1001z/js/bootstrap.min.js"></script>
+    <script defer src="/templates/1001z/js/ui/jquery-ui-1.10.4.custom.min.js"></script>
+	<script defer src="/templates/1001z/js/scripts.js"></script>
+
 	<!--[if IE]>
-	<script type="text/javascript" src="/templates/1001z/js/iehtmlfix.js"></script>
+	<script src="/templates/1001z/js/iehtmlfix.js"></script>
 	<![endif]-->
 	<jdoc:include type="head" />
 	
@@ -189,12 +202,29 @@ unset($this->_generator);
 
 <!--wrapper-->
 <div class="wrapper container">
+
+    <aside class="row autopiter">
+        <?php if ($_SERVER['REQUEST_URI'] == "/basket") { ?>
+            <jdoc:include type="message"/>
+            <jdoc:include type="modules" name="bread" style="xhtml"/>
+            <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/includes/autopiter/basket.php";
+            } elseif ($_SERVER['REQUEST_URI'] == "/information") {
+                require_once $_SERVER["DOCUMENT_ROOT"] . "/includes/autopiter/information.php";
+            } elseif ($_SERVER['REQUEST_URI'] == "/order") {
+                require_once $_SERVER["DOCUMENT_ROOT"] . "/includes/autopiter/order.php";
+            } else
+                require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/body.php";
+        ?>
+    </aside>
+
 	<div class="row">
 		<div class="col-sm-8 col-md-9 col-sm-push-4 col-md-push-3 main">
 			<div class="content-page">
-				<jdoc:include type="message" />
-				<jdoc:include type="modules" name="bread" style="xhtml"/>
-				<jdoc:include type="component" />
+                <?php if (($_SERVER['REQUEST_URI'] != "/basket") && ($_SERVER['REQUEST_URI'] != "/information") && ($_SERVER['REQUEST_URI'] != "/order")):?>
+				    <jdoc:include type="message" />
+				    <jdoc:include type="modules" name="bread" style="xhtml"/>
+				    <jdoc:include type="component" />
+                <?php endif;?>
 
 				<!--модалка-->
 				<button class="order-button center-block" data-target="#modal-zakaz" data-toggle="modal">Заказать обратный звонок</button>
@@ -275,7 +305,7 @@ unset($this->_generator);
 
 	<div class="row yandex-map">
 		<div class="map-load">Загрузка карты...</div>
-		<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A100249c8068b20ec1e61a2c4b872ec8d0435b289fd03e5d52bb3f19e3bcce5a3&amp;width=100%25&amp;height=350&amp;lang=ru_RU&amp;scroll=false"></script>	</div>
+		<script async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A100249c8068b20ec1e61a2c4b872ec8d0435b289fd03e5d52bb3f19e3bcce5a3&amp;width=100%25&amp;height=350&amp;lang=ru_RU&amp;scroll=false"></script>	</div>
 </div>
 <!--wrapper-->
 
@@ -303,7 +333,7 @@ style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" tit
 <!-- /Yandex.Metrika informer -->
 
 <!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
+<script>
     (function (d, w, c) {
         (w[c] = w[c] || []).push(function() {
             try {
