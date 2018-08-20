@@ -58,7 +58,7 @@ else {
                 $message .= '</tbody></table>';
             }
 
-            $toShop = "kursk-1001z@yandex.ru"; /*Укажите ваш адрес электоронной почты kursk-1001z@yandex.ru*/
+            $toShop = "tanto39@mail.ru"; /*Укажите ваш адрес электоронной почты kursk-1001z@yandex.ru*/
             $headers = "Content-type: text/html; charset = utf-8";
             $subject = "Заказ ".$numOrder;
             $send = mail ($toShop, $subject, $message, $headers);
