@@ -210,6 +210,8 @@ unset($this->_generator);
             <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/includes/autopiter/basket.php";
             } elseif ($_SERVER['REQUEST_URI'] == "/information") {
                 require_once $_SERVER["DOCUMENT_ROOT"] . "/includes/autopiter/information.php";
+            } elseif ($_SERVER['REQUEST_URI'] == "/order") {
+                require_once $_SERVER["DOCUMENT_ROOT"] . "/includes/autopiter/order.php";
             } else
                 require_once $_SERVER["DOCUMENT_ROOT"]."/includes/autopiter/body.php";
         ?>
@@ -218,7 +220,7 @@ unset($this->_generator);
 	<div class="row">
 		<div class="col-sm-8 col-md-9 col-sm-push-4 col-md-push-3 main">
 			<div class="content-page">
-                <?php if (($_SERVER['REQUEST_URI'] != "/basket") && ($_SERVER['REQUEST_URI'] != "/information")):?>
+                <?php if (($_SERVER['REQUEST_URI'] != "/basket") && ($_SERVER['REQUEST_URI'] != "/information") && ($_SERVER['REQUEST_URI'] != "/order")):?>
 				    <jdoc:include type="message" />
 				    <jdoc:include type="modules" name="bread" style="xhtml"/>
 				    <jdoc:include type="component" />

@@ -1089,6 +1089,7 @@ th {
 }
 .checkbox-inline, .radio-inline , label.label-inline {display: inline-block;}
 .form-basket input{border: 1px solid #82a1af;}
+.sendorder {margin-left: 5px;}
 
 /*----adaptation----*/
 @media all and (max-width: 768px) {

@@ -56,7 +56,7 @@
             </table>
 
             <div class="form-basket">
-                <form method="post" action="/order.php" id="basket-form">
+                <form method="post" action="/order" id="basket-form">
                     <div class="form-zakaz">
                         <input class="form-name form-control" type="text" placeholder="Введите имя" required name="name" size="16" />
                         <input class="form-phone form-control" type="tel" placeholder="8**********" required pattern="(\+?\d[- .]*){7,13}" title="Международный, государственный или местный телефонный номер" name="phone" size="16" />
@@ -71,7 +71,7 @@
 
             <div class="basket-controls flex">
                 <button class="btn btn-default btn-lg clearbasket" type="submit">Очистить корзину</button>
-                <input class="btn btn-success btn-lg" type="submit" form="basket-form" value="Оформить заказ">
+                <input class="btn btn-success btn-lg sendorder" name="sendorder" type="submit" form="basket-form" value="Оформить заказ">
             </div>
 
         <?php } else {
