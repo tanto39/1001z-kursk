@@ -84,7 +84,6 @@ unset($this->_generator);
 			<div class="col-md-5 header-right">
 				<div class="top-tel-wrap">
 					<div class="top-tel-box">
-						<div class="top-tel">+7 (4712) 39-89-58</div>
 						<div class="top-tel">+7 (950) 873-41-65</div>
 					</div>
 					<svg width="50" height="50" class="svg-tel hidden-sm hidden-xs" style="float: right; margin: 10px;" xmlns="http://www.w3.org/2000/svg">
@@ -313,18 +312,16 @@ unset($this->_generator);
 		<div class="container">
 			<div class="row contact" itemscope itemtype="http://schema.org/LocalBusiness" >
 				<div class="col-sm-6 footer-block">
-					<div class="fn org" itemprop="name">&copy; 2017. <span class="category">Магазин автозапчастей </span>"1001 Запчасть". </div>
+					<div class="fn org" itemprop="name">&copy; 2019. <span class="category">Магазин автозапчастей </span>"1001 Запчасть". </div>
 						<div itemprop="address">г. Курск, просп. Победы, 50</div>
-						<div class="tel" itemprop="telephone">+7 4712 39-89-58</div>
 						<div class="tel" itemprop="telephone">+7 (950) 873-41-65</div>
 						<div class="email" itemprop="email">kursk-1001z@yandex.ru</div>
 				</div>
 				<div class="col-sm-2 footer-block"></div>
 				<div class="col-sm-4 footer-block">
 					<div>Время работы:</div>
-					<div>пн-пт - <span class="workhours" itemprop="openingHours"> 08:30 - 19:00</span></div>
-					<div>сб - <span class="workhours" itemprop="openingHours"> 08:30 - 14:00</span></div>
-					<div>Перерыв - <span> 14:00 - 15:00</span></div>
+					<div>понедельник-пятница: <span class="workhours" itemprop="openingHours"> 10:00 - 18:00</span></div>
+					<div>суббота, воскресенье: <span class="workhours">выходной</span></div>
 					<div class="metrica">
 						<!-- Yandex.Metrika informer -->
 <a href="https://metrika.yandex.ru/stat/?id=45779661&amp;from=informer"

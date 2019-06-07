@@ -365,6 +365,7 @@ a.catalog-link-all:hover, a.catalog-link-all:focus{
 	margin: 10px 0 10px 0;
 }
 .top-tel{
+	margin-top: 15px;
 	line-height: 1.3;
 	clear: both;
 	letter-spacing: 0.05em;
