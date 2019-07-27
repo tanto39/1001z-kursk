@@ -613,7 +613,7 @@ ul.spisok li{
 .left-side{
 	padding: 0 15px 0 0 !important;
 }
-.pb-link {display: block;}
+.pb-link {display: block; margin: 0 0 10px 0;}
 .pb-link img {max-width: 100%;}
 
 
