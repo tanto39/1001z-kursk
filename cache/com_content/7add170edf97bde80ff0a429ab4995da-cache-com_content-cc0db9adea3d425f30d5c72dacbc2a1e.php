@@ -1,4 +1,4 @@
-<?php die("Access Denied"); ?>#x#a:5:{s:4:"body";s:5748:"<main class="item-page" itemscope itemtype="https://schema.org/Article">
+<?php die("Access Denied"); ?>#x#a:5:{s:4:"body";s:4188:"<main class="item-page" itemscope itemtype="https://schema.org/Article">
 	<meta itemprop="inLanguage" content="ru-RU" />
 	
 		
@@ -52,14 +52,6 @@
 <li>Volkswagen</li>
 </ul>
 </div>
-</div>
-<div class="content-block text-center">
-<h3>Покупки без переплат, комиссий и даже первого взноса?</h3>
-<p>Конечно! Если у Вас уже есть Халва.</p>
-<a href="http://halvacard.ru/halva/?utm_medium=Partner&amp;utm_source=1001z-kursk.ru&amp;utm_campaign=halva" target="_blank" rel="noopener noreferrer"><img class="halva" src="images/halva.jpg" alt="Халва" title="Халва" /></a>
-<p>С Халвой Вам больше не придется откладывать покупки до зарплаты или оформлять кипу бумаг для получения товарного кредита в магазине. Халва – это одобренный и всегда доступный лимит средств. Сумма ваших покупок делится на количество месяцев рассрочки.</p>
-<p>В нашем магазине Вы можете приобретать товары по карте Халва в рассрочку до 12 месяцев. Покупайте, когда это нужно вам, вносите платеж раз в месяц и не платите процентов!</p>
-<p>Оформить карту и ознакомиться с подробной информации вы можете на сайте <a href="http://halvacard.ru/halva/?utm_medium=Partner&amp;utm_source=1001z-kursk.ru&amp;utm_campaign=halva" target="_blank" rel="noopener noreferrer">halvacard.ru</a></p>
 </div>
 <div class="content-block text-center">
 <h3>У нас Вы можете взять займ под залог авто!</h3>
